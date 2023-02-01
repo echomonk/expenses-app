@@ -23,12 +23,12 @@ const expenses = [
   },
 ];
 
-function App() {
+const App = () => {
   return (
     <div>
       <ExpenseList items={expenses} />
     </div>
   );
-}
+};
 
 export default App;
