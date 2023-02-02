@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  //  const [newExpense, setNewExpense] = useState({
+  //    enteredTitle: "",
+  //    enteredAmount: "",
+  //    enteredDate: "",
+  //  });
 
   //--------------------------------------------------------------------------------------//
   //                                    FORM HANDLERS                                     //
@@ -12,14 +17,32 @@ const ExpenseForm = () => {
 
   const handleTitleChange = (e) => {
     setEnteredTitle(e.target.value);
+    //  setNewExpense((prevState) => {
+    //    return {
+    //      ...prevState,
+    //      enteredTitle: e.target.value,
+    //    };
+    //  });
   };
 
   const handleAmountChange = (e) => {
     setEnteredAmount(e.target.value);
+    // setNewExpense((prevState) => {
+    //   return {
+    //     ...prevState,
+    //     enteredAmount: e.target.value,
+    //   };
+    // });
   };
 
   const handleDateChange = (e) => {
     setEnteredDate(e.target.value);
+    //  setNewExpense((prevState) => {
+    //    return {
+    //      ...prevState,
+    //      enteredDate: e.target.value,
+    //    };
+    //  });
   };
 
   const handleSubmit = (e) => {
@@ -29,8 +52,7 @@ const ExpenseForm = () => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
-
+    props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
