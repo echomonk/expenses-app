@@ -2,6 +2,7 @@ import React from "react";
 import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
+  // Sets the selected year state
   const handleFilterChange = (e) => {
     props.onExpenseFilterChange(e.target.value);
   };

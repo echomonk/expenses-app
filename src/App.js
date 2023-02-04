@@ -27,12 +27,20 @@ const DUMMY_EXPENSES = [
 const App = (props) => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
+  /**
+   * Adds a new expense to the expenses array
+   * @param expense - the new expense to add
+   */
   const handleAddExpenseData = (expense) => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
   };
 
+  /**
+   * Deletes an expense from the expenses array
+   * @param expenseId - the id of the expense to delete
+   */
   const handleDeleteExpense = (expenseId) => {
     const updatedExpenses = expenses.filter((expense) => {
       return expense.id !== expenseId;

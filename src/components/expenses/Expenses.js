@@ -9,10 +9,12 @@ import ExpensesChart from "./ExpensesChart";
 const ExpenseList = (props) => {
   const [filteredYear, setFilteredYear] = useState("ALL");
 
+  // Sets the filtered year state
   const handleExpenseFilterChange = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
+  // Filters the expenses by the selected year to conditionally render the chart and list
   const filteredExpenses = props.items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });

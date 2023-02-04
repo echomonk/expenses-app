@@ -4,9 +4,11 @@ import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
+  // Item delete pointer function
   const handleDelete = () => {
     props.onDelete(props.itemToDelete);
   };
+
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
