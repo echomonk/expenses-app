@@ -26,7 +26,6 @@ const DUMMY_EXPENSES = [
 
 const App = (props) => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
-  console.log(expenses);
 
   const handleAddExpenseData = (expense) => {
     setExpenses((prevExpenses) => {
