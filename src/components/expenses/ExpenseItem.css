@@ -51,4 +51,22 @@
     font-size: 1.25rem;
     padding: 0.5rem 1.5rem;
   }
+  .expense-item button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0rem 1rem;
+    height: 3rem;
+    border: 1px solid #40005d;
+    background-color: #40005d;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .expense-item button:hover,
+  .expense-item button:active {
+    background-color: #510674;
+    border-color: #510674;
+  }
 }

@@ -26,6 +26,7 @@ const DUMMY_EXPENSES = [
 
 const App = (props) => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  console.log(expenses);
 
   const handleAddExpenseData = (expense) => {
     setExpenses((prevExpenses) => {
@@ -33,10 +34,21 @@ const App = (props) => {
     });
   };
 
+  const handleDeleteExpense = (expenseId) => {
+    const updatedExpenses = expenses.filter((expense) => {
+      return expense.id !== expenseId;
+    });
+    setExpenses(updatedExpenses);
+  };
+
   return (
     <div>
       <NewExpense onAddExpenseData={handleAddExpenseData} />
-      <Expenses selectedYear={props.filteredYear} items={expenses} />
+      <Expenses
+        selectedYear={props.filteredYear}
+        items={expenses}
+        onDelete={handleDeleteExpense}
+      />
     </div>
   );
 };

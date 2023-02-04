@@ -10,6 +10,7 @@ const ExpensesList = (props) => {
       </h2>
     );
   }
+
   return (
     <ul className="expenses-list">
       {props.items.map((expense) => (
@@ -18,6 +19,8 @@ const ExpensesList = (props) => {
           date={expense.date}
           title={expense.title}
           amount={expense.amount}
+          onDelete={props.onDelete}
+          itemToDelete={expense.id}
         />
       ))}
     </ul>

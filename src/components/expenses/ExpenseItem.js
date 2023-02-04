@@ -4,6 +4,9 @@ import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
+  const handleDelete = () => {
+    props.onDelete(props.itemToDelete);
+  };
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date} />
@@ -11,6 +14,8 @@ const ExpenseItem = (props) => {
         <h2>{props.title}</h2>
         <div className="expense-item__price">$ {props.amount}</div>
       </div>
+
+      <button onClick={handleDelete}>Delete</button>
     </Card>
   );
 };
