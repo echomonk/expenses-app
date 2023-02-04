@@ -13,37 +13,33 @@ const ExpenseList = (props) => {
     setFilteredYear(selectedYear);
   };
 
-  if (filteredYear === "ALL") {
-    return (
-      <li>
-        <Card className="expenses">
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  return (
+    <Card className="expenses">
+      {filteredYear === "ALL" ? (
+        <React.Fragment>
           <ExpensesFilter
             selected={filteredYear}
             onExpenseFilterChange={handleExpenseFilterChange}
           />
           <ExpensesChart expenses={props.items} />
           <ExpensesList items={props.items} onDelete={props.onDelete} />
-        </Card>
-      </li>
-    );
-  } else {
-    const filteredExpenses = props.items.filter((expense) => {
-      return expense.date.getFullYear().toString() === filteredYear;
-    });
-
-    return (
-      <li>
-        <Card className="expenses">
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
           <ExpensesFilter
             selected={filteredYear}
             onExpenseFilterChange={handleExpenseFilterChange}
           />
           <ExpensesChart expenses={filteredExpenses} />
           <ExpensesList items={filteredExpenses} onDelete={props.onDelete} />
-        </Card>
-      </li>
-    );
-  }
+        </React.Fragment>
+      )}
+    </Card>
+  );
 };
 
 export default ExpenseList;
