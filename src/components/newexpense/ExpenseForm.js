@@ -22,17 +22,24 @@ const ExpenseForm = (props) => {
     setEnteredDate(e.target.value);
   };
 
+  /**
+   * Handles the form submission
+   * @param {*} event
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Creates an object with the data from the form
     const expenseData = {
       title: enteredTitle,
       amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
+    // Resets the form
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    // Closes the form
     props.onCancel();
   };
 

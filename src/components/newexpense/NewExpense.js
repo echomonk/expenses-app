@@ -5,6 +5,10 @@ import "./NewExpense.css";
 const NewExpense = (props) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
 
+  //--------------------------------------------------------------------------------------//
+  //                                    FORM HANDLERS                                     //
+  //--------------------------------------------------------------------------------------//
+
   const handleOpenForm = () => {
     setIsFormVisible(true);
   };
@@ -13,7 +17,12 @@ const NewExpense = (props) => {
     setIsFormVisible(false);
   };
 
+  /**
+   * Saves the data from the form
+   * @param {*} enteredExpenseData
+   */
   const handleSaveExpenseData = (enteredExpenseData) => {
+    // Creates an object with the data from the form and adds an id to it
     const expenseData = {
       ...enteredExpenseData,
       id: Math.random().toString(),
