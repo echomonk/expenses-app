@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Expenses from "./components/expenses/Expenses";
 import NewExpense from "./components/newexpense/NewExpense";
+import { useAccount } from "wagmi";
+import WagmiConnect from "./components/web3/WagmiConnect";
+import { disconnect } from "@wagmi/core";
+import AddressCard from "./components/ui/AddressCard";
 
 const DUMMY_EXPENSES = [
   {
@@ -25,6 +29,7 @@ const DUMMY_EXPENSES = [
 ];
 
 const App = (props) => {
+  const { address, isConnected } = useAccount();
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   /**
@@ -48,14 +53,25 @@ const App = (props) => {
     setExpenses(updatedExpenses);
   };
 
+  const handleDisconnect = async () => {
+    await disconnect();
+  };
+
   return (
     <div>
-      <NewExpense onAddExpenseData={handleAddExpenseData} />
-      <Expenses
-        selectedYear={props.filteredYear}
-        items={expenses}
-        onDelete={handleDeleteExpense}
-      />
+      {isConnected ? (
+        <div>
+          <AddressCard address={address} disconnect={handleDisconnect} />
+          <NewExpense onAddExpenseData={handleAddExpenseData} />
+          <Expenses
+            selectedYear={props.filteredYear}
+            items={expenses}
+            onDelete={handleDeleteExpense}
+          />
+        </div>
+      ) : (
+        <WagmiConnect />
+      )}
     </div>
   );
 };
